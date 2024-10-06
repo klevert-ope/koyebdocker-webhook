@@ -26,7 +26,7 @@ RUN adduser -D appuser
 USER appuser
 
 # Expose port and define health check
-EXPOSE 8080
+EXPOSE 8088
 
 # Command to run the executable
 CMD ["./main"]
