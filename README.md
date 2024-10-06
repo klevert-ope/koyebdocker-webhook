@@ -34,7 +34,7 @@ This application is designed to handle incoming webhooks from Docker Hub and tri
 
 ### Prerequisites
 
-- Go 1.22+
+- Go 1.23+
 - Docker
 - Koyeb API token
 - Docker Hub webhook configured
