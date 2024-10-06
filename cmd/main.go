@@ -3,15 +3,14 @@ package main
 import (
 	"context"
 	"errors"
+	"koyebdocker-webhook/config"
+	"koyebdocker-webhook/controller"
 	"log"
 	"net/http"
 	"os"
 	"os/signal"
 	"syscall"
 	"time"
-
-	"koyebdocker-webhook/config"
-	"koyebdocker-webhook/controller"
 )
 
 func main() {
@@ -21,7 +20,7 @@ func main() {
 	}
 
 	// Create a new server
-	addr := ":8080"
+	addr := ":8088"
 	srv := &http.Server{
 		Addr:    addr,
 		Handler: controller.SetupRouter(),
@@ -60,7 +59,7 @@ func main() {
 // waitForServerReady waits until the server is ready to handle requests
 func waitForServerReady() {
 	for {
-		resp, err := http.Get("http://localhost:8080/health")
+		resp, err := http.Get("http://localhost:8088/health")
 		if err == nil && resp.StatusCode == http.StatusOK {
 			log.Println("Server is ready to handle requests")
 			return
